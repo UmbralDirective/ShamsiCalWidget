@@ -1,69 +1,54 @@
+Output
 name: Build APK
 
 on:
   push:
     branches: [ main, master ]
-  workflow_dispatch:   # امکان اجرای دستی از GitHub
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # ۱. دریافت کد
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # ۲. نصب Java 17
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: gradle
 
-      # ۳. دانلود فونت Vazirmatn از Google Fonts
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Download Gradle wrapper jar
+        run: |
+          mkdir -p gradle/wrapper
+          curl -L "https://raw.githubusercontent.com/gradle/gradle/v8.2.0/gradle/wrapper/gradle-wrapper.jar" \
+            -o gradle/wrapper/gradle-wrapper.jar
+          echo "Wrapper jar: $(ls -lh gradle/wrapper/gradle-wrapper.jar)"
+
       - name: Download Vazirmatn fonts
         run: |
           mkdir -p app/src/main/res/font
-          # دانلود مستقیم از GitHub رسمی Vazirmatn
           curl -L "https://github.com/rastikerdar/vazirmatn/releases/download/v33.003/Vazirmatn-fonts.zip" \
             -o vazirmatn.zip
           unzip -o vazirmatn.zip
-          # پیدا کردن و کپی فایل‌های TTF
           find . -name "Vazirmatn-Medium.ttf" | head -1 | xargs -I{} cp {} app/src/main/res/font/vazirmatn_medium.ttf
           find . -name "Vazirmatn-Bold.ttf"   | head -1 | xargs -I{} cp {} app/src/main/res/font/vazirmatn_bold.ttf
-          echo "✅ Fonts copied:"
-          ls -lh app/src/main/res/font/*.ttf
+          ls -lh app/src/main/res/font/
 
-      # ۴. دسترسی اجرا به gradlew
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      # ۵. دانلود Gradle wrapper jar (اگر موجود نباشد)
-      - name: Download Gradle wrapper jar
-        run: |
-          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
-            curl -L "https://github.com/gradle/gradle/raw/v8.2.0/gradle/wrapper/gradle-wrapper.jar" \
-              -o gradle/wrapper/gradle-wrapper.jar
-          fi
-
-      # ۶. Build debug APK
       - name: Build Debug APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
-        env:
-          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false"
 
-      # ۷. آپلود APK به عنوان Artifact
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ShamsiCalWidget-debug
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
-
-      # ۸. نمایش اطلاعات APK
-      - name: APK Info
-        run: |
-          echo "✅ Build successful!"
-          ls -lh app/build/outputs/apk/debug/app-debug.apk
