@@ -15,6 +15,16 @@ class HomeTextWidgetProvider : AppWidgetProvider() {
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         appWidgetIds.forEach { updateWidget(context, appWidgetManager, it) }
     }
+    
+    override fun onEnabled(context: Context) {
+    super.onEnabled(context)
+    WidgetUpdateService.scheduleDailyAlarm(context)
+    }
+
+    override fun onDisabled(context: Context) {
+    super.onDisabled(context)
+    WidgetUpdateService.cancelAlarm(context)
+    }
 
     companion object {
         fun updateWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
