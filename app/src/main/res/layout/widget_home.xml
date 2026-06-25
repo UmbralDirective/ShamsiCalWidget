@@ -30,7 +30,7 @@
         android:includeFontPadding="false"
         android:text="۴"
         android:textColor="@color/widget_text_primary"
-        android:textSize="100sp" />
+        android:textSize="90sp" />
 
     <TextView
         android:id="@+id/tv_month_year"
