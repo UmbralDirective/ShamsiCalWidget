@@ -17,7 +17,11 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/vazirmatn_medium"
         android:text="تیر"
-        android:textColor="@color/widget_text_primary"
+        android:textColor="#FFFFFF"
+        android:shadowColor="#99000000"
+        android:shadowDx="0"
+        android:shadowDy="1"
+        android:shadowRadius="6"
         android:textSize="30sp" />
 
     <TextView
@@ -26,7 +30,11 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/vazirmatn_bold"
         android:text="۴"
-        android:textColor="@color/widget_text_primary"
+        android:textColor="#FFFFFF"
+        android:shadowColor="#99000000"
+        android:shadowDx="0"
+        android:shadowDy="1"
+        android:shadowRadius="6"
         android:textSize="30sp"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="6dp" />
@@ -37,7 +45,11 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/vazirmatn_medium"
         android:text="پنجشنبه"
-        android:textColor="@color/widget_text_primary"
+        android:textColor="#FFFFFF"
+        android:shadowColor="#99000000"
+        android:shadowDx="0"
+        android:shadowDy="1"
+        android:shadowRadius="6"
         android:textSize="30sp"
         android:layout_marginEnd="8dp" />
 
