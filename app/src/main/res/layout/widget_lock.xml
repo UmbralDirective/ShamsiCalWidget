@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:gravity="center"
-    android:padding="4dp">
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp">
     
     <TextView
         android:id="@+id/tv_lock_month"
