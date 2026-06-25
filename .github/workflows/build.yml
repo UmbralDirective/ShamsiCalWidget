@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -37,23 +39,28 @@ jobs:
       - name: List APKs
         run: find app/build/outputs/apk/debug/ -name "*.apk" | sort
 
-      - name: Upload Universal APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: ShamsiCalWidget-universal
-          path: app/build/outputs/apk/debug/*universal*.apk
-          retention-days: 30
+      - name: Generate changelog
+        id: changelog
+        run: |
+          PREV_TAG=$(git tag --sort=-creatordate | head -2 | tail -1)
+          if [ -z "$PREV_TAG" ]; then
+            LOG=$(git log --pretty=format:"- %s" | head -20)
+          else
+            LOG=$(git log "$PREV_TAG"..HEAD --pretty=format:"- %s")
+          fi
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          echo "$LOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Upload arm64-v8a APK
-        uses: actions/upload-artifact@v4
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: ShamsiCalWidget-arm64-v8a
-          path: app/build/outputs/apk/debug/*arm64*.apk
-          retention-days: 30
-
-      - name: Upload armeabi-v7a APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: ShamsiCalWidget-armeabi-v7a
-          path: app/build/outputs/apk/debug/*v7a*.apk
-          retention-days: 30
+          tag_name: v${{ github.run_number }}
+          name: Release v${{ github.run_number }}
+          body: |
+            ## تغییرات
+            ${{ steps.changelog.outputs.CHANGELOG }}
+          files: |
+            app/build/outputs/apk/debug/*universal*.apk
+            app/build/outputs/apk/debug/*arm64*.apk
+            app/build/outputs/apk/debug/*v7a*.apk
