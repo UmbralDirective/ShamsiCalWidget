@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Widget DARK theme (night mode) — matches ShamsiCal black -->
-    <color name="widget_background">#E6000000</color>
-    <color name="widget_text_primary">#FFFFFF</color>
-    <color name="widget_text_secondary">#CCFFFFFF</color>
-</resources>
