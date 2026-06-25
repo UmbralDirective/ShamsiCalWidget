@@ -7,34 +7,31 @@
     android:orientation="horizontal"
     android:gravity="center"
     android:padding="4dp">
-
-
-    <TextView
-        android:id="@+id/tv_lock_day_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/vazirmatn_bold"
-        android:text="۴"
-        android:textColor="@color/widget_text_primary"
-        android:textSize="30sp"
-        android:layout_marginEnd="6dp" />
-
     <TextView
         android:id="@+id/tv_lock_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vazirmatn_medium"
         android:text="تیر"
-        android:textColor="@color/widget_text_secondary"
+        android:textColor="#CCCCCC"
         android:textSize="30sp" />
-
+    
+    <TextView
+        android:id="@+id/tv_lock_day_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vazirmatn_bold"
+        android:text="۴"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:layout_marginEnd="6dp" />
     <TextView
         android:id="@+id/tv_lock_day_of_week"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vazirmatn_medium"
         android:text="پنجشنبه"
-        android:textColor="@color/widget_text_primary"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:layout_marginEnd="8dp" />
     
