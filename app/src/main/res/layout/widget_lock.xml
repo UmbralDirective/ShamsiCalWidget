@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/vazirmatn_medium"
         android:text="تیر"
-        android:textColor="#CCCCCC"
+        android:textColor="#FFFFFF"
         android:textSize="30sp" />
     
     <TextView
