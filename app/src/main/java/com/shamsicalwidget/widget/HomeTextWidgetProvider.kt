@@ -13,18 +13,13 @@ import com.shamsicalwidget.util.JalaliCalendar
 class HomeTextWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-    WidgetUpdateService.scheduleDailyAlarm(context)
-    appWidgetIds.forEach { updateWidget(context, appWidgetManager, it) }
-    }
-    
-    override fun onEnabled(context: Context) {
-    super.onEnabled(context)
-    WidgetUpdateService.scheduleDailyAlarm(context)
+        WidgetUpdateService.scheduleDailyAlarm(context)
+        appWidgetIds.forEach { updateWidget(context, appWidgetManager, it) }
     }
 
-    override fun onDisabled(context: Context) {
-    super.onDisabled(context)
-    WidgetUpdateService.cancelAlarm(context)
+    override fun onEnabled(context: Context) {
+        super.onEnabled(context)
+        WidgetUpdateService.scheduleDailyAlarm(context)
     }
 
     companion object {
@@ -40,7 +35,7 @@ class HomeTextWidgetProvider : AppWidgetProvider() {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
             }
             val pending = PendingIntent.getActivity(
-                context, 1, calIntent,
+                context, 2, calIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
             views.setOnClickPendingIntent(R.id.widget_home_text_root, pending)
