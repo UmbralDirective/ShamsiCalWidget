@@ -9,6 +9,7 @@
     android:maxResizeHeight="60dp"
     android:minResizeWidth="140dp"
     android:minResizeHeight="40dp"
+    android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="0"
     android:initialLayout="@layout/widget_lock"
     android:resizeMode="horizontal"
