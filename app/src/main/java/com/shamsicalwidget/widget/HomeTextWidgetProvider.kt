@@ -13,7 +13,8 @@ import com.shamsicalwidget.util.JalaliCalendar
 class HomeTextWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        appWidgetIds.forEach { updateWidget(context, appWidgetManager, it) }
+    WidgetUpdateService.scheduleDailyAlarm(context)
+    appWidgetIds.forEach { updateWidget(context, appWidgetManager, it) }
     }
     
     override fun onEnabled(context: Context) {
