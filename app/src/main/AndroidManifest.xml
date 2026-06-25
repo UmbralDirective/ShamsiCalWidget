@@ -67,7 +67,7 @@
             <intent-filter>
                 <action android:name="com.shamsicalwidget.ACTION_UPDATE_WIDGETS" />
             </intent-filter>
-        </receiver>>
+        </receiver>
 
     </application>
 </manifest>
