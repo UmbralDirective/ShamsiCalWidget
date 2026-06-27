@@ -18,4 +18,4 @@
 
     android:initialLayout="@layout/widget_home"
 
-    android:widgetCategory="home_screen"
+    android:widgetCategory="home_screen"/>
