@@ -19,5 +19,3 @@
     android:initialLayout="@layout/widget_home"
 
     android:widgetCategory="home_screen"
-
-    android:previewImage="@drawable/widget_preview_home"/>
