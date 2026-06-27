@@ -1,2 +1,0 @@
--keep class com.shamsicalwidget.** { *; }
--keepclassmembers class com.shamsicalwidget.** { *; }
