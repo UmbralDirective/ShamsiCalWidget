@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">ShamsiCal Widget</string>
-    <string name="widget_home_name">تقویم شمسی (خانه)</string>
-    <string name="widget_lock_name">تقویم شمسی (قفل صفحه)</string>
-    <string name="widget_home_text_name">تقویم شمسی (متنی)</string>
-</resources>
