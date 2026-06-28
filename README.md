@@ -1,6 +1,6 @@
 # ShamsiCal Widget — Android
 
-ویجت تقویم شمسی برای اندروید — کلون ShamsiCal iOS
+ویجت تقویم شمسی برای اندروید — الهام گرفته از اپ  ShamsiCal iOS
 
 ## ساختار ویجت‌ها
 
